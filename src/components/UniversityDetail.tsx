@@ -18,15 +18,17 @@ const fadeUp = {
 export default function UniversityDetail({ onBack, onEnterPlanner }: Props) {
   const [catalogOpen, setCatalogOpen] = useState(false);
 
-  // Group the catalog by subject prefix (CS, MTH, ENG, …)
+  // Group the catalog by subject prefix (CS, MTH, ENG, …). CS shown first.
   const catalog = useMemo(() => {
-    const groups: Record<string, { code: string; title: string; credits: number }[]> = {};
+    const groups: Record<string, { code: string; title: string; credits: number; prereqs: string[] }[]> = {};
     Object.values(COURSES).forEach((c) => {
       const prefix = c.code.split(" ")[0];
-      (groups[prefix] ??= []).push({ code: c.code, title: c.title, credits: c.credits });
+      (groups[prefix] ??= []).push({ code: c.code, title: c.title, credits: c.credits, prereqs: c.prereqs });
     });
-    Object.values(groups).forEach((arr) => arr.sort((a, b) => a.code.localeCompare(b.code)));
-    return Object.entries(groups).sort(([a], [b]) => a.localeCompare(b));
+    Object.values(groups).forEach((arr) =>
+      arr.sort((a, b) => parseInt(a.code.split(" ")[1]) - parseInt(b.code.split(" ")[1]))
+    );
+    return Object.entries(groups).sort(([a], [b]) => (a === "CS" ? -1 : b === "CS" ? 1 : a.localeCompare(b)));
   }, []);
 
   const Section = ({ children, i = 0 }: { children: React.ReactNode; i?: number }) => (
@@ -159,11 +161,16 @@ export default function UniversityDetail({ onBack, onEnterPlanner }: Props) {
             {catalog.map(([prefix, courses]) => (
               <div key={prefix}>
                 <h3 className="text-xs font-bold text-maroon-700 uppercase tracking-wide mb-2 sticky top-0">{prefix} · {courses.length} courses</h3>
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {courses.map((c) => (
                     <div key={c.code} className="flex items-baseline gap-2 text-sm">
                       <span className="font-mono text-xs text-slate-400 w-16 shrink-0">{c.code}</span>
-                      <span className="text-slate-600 flex-1 truncate">{c.title}</span>
+                      <span className="flex-1 min-w-0">
+                        <span className="text-slate-700">{c.title}</span>
+                        {c.prereqs.length > 0 && (
+                          <span className="block text-[10px] text-slate-400">Prereq: {c.prereqs.join(", ")}</span>
+                        )}
+                      </span>
                       <span className="text-xs text-slate-400 shrink-0">{c.credits} cr</span>
                     </div>
                   ))}

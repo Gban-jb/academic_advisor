@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SAMPLE_STUDENT, type StudentData, type Concentration } from "@/lib/data";
+import { EMPTY_STUDENT, type StudentData, type Concentration } from "@/lib/data";
 import StepEntry from "@/components/StepEntry";
 import StepReview from "@/components/StepReview";
 import StepConcentration from "@/components/StepConcentration";
@@ -23,7 +23,7 @@ interface Props {
 export default function Planner({ onExit }: Props) {
   const [step, setStep] = useState(0);
   const [dir, setDir] = useState(1);
-  const [student, setStudent] = useState<StudentData>(SAMPLE_STUDENT);
+  const [student, setStudent] = useState<StudentData>(EMPTY_STUDENT);
 
   const go = (target: number) => {
     setDir(target > step ? 1 : -1);

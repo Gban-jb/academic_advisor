@@ -52,45 +52,50 @@ export function gradeIsRegistered(grade: Grade): boolean {
 // ─── Course Database ──────────────────────────────────────────────────────────
 
 export const COURSES: Record<string, Course> = {
-  "CS 101": { code: "CS 101", title: "Intro to CS", credits: 3, prereqs: [] },
+  // ── Computer Science — required spine (AAMU 2025-2026 Bulletin, p.199) ──
   "CS 102": { code: "CS 102", title: "Intro to Programming I", credits: 3, prereqs: [] },
   "CS 104": { code: "CS 104", title: "Intro to Computers & Ethics", credits: 3, prereqs: [] },
   "CS 109": { code: "CS 109", title: "Intro to Programming II", credits: 3, prereqs: ["CS 102"] },
   "CS 203": { code: "CS 203", title: "Discrete Structures", credits: 3, prereqs: ["CS 102"] },
-  "CS 206": { code: "CS 206", title: "Intro Java Programming", credits: 3, prereqs: ["CS 102"] },
+  "CS 206": { code: "CS 206", title: "Intro Java Programming I", credits: 3, prereqs: ["CS 102"] },
   "CS 209": { code: "CS 209", title: "Intro to Digital Logic Design", credits: 3, prereqs: ["CS 203"] },
   "CS 215": { code: "CS 215", title: "Data Structures", credits: 3, prereqs: ["CS 109"] },
-  "CS 303L": { code: "CS 303L", title: "CS Lab", credits: 1, prereqs: ["CS 109", "CS 203"] },
-  "CS 305": { code: "CS 305", title: "Computer Architecture", credits: 3, prereqs: ["CS 109", "CS 209"] },
-  "CS 306": { code: "CS 306", title: "Advanced Java", credits: 3, prereqs: ["CS 206"] },
-  "CS 309": { code: "CS 309", title: "Algorithms", credits: 3, prereqs: ["CS 215", "CS 203"] },
   "CS 314": { code: "CS 314", title: "Advanced Programming", credits: 3, prereqs: ["CS 109", "CS 206"] },
-  "CS 315": { code: "CS 315", title: "Advanced Data Structures", credits: 3, prereqs: ["CS 215"] },
-  "CS 321": { code: "CS 321", title: "Principles of Information Security", credits: 3, prereqs: ["CS 104"] },
-  "CS 328": { code: "CS 328", title: "Web Development", credits: 3, prereqs: ["CS 109", "CS 206"] },
-  "CS 330": { code: "CS 330", title: "Network Fundamentals", credits: 3, prereqs: ["CS 104"] },
-  "CS 381": { code: "CS 381", title: "Computer Organization", credits: 3, prereqs: ["CS 203", "CS 209"] },
-  "CS 384": { code: "CS 384", title: "Operating Systems", credits: 3, prereqs: ["CS 215", "CS 209"] },
-  "CS 386": { code: "CS 386", title: "Cryptography", credits: 3, prereqs: ["CS 215", "CS 203"] },
-  "CS 389": { code: "CS 389", title: "Programming in Robotics System", credits: 3, prereqs: ["CS 109", "CS 206"] },
   "CS 401": { code: "CS 401", title: "Software Engineering", credits: 3, prereqs: ["CS 314", "CS 215"] },
   "CS 403": { code: "CS 403", title: "Senior Problems (Capstone)", credits: 3, prereqs: ["CS 401"] },
   "CS 405": { code: "CS 405", title: "Linux w/ Applied Programming", credits: 3, prereqs: ["CS 215", "CS 209"] },
+  "CS 410": { code: "CS 410", title: "Seminar", credits: 3, prereqs: [] },
+  "CS 425": { code: "CS 425", title: "Theory of Algorithms", credits: 3, prereqs: ["CS 215", "CS 203"] },
+  // ── Concentration core (shared by all concentrations) ──
+  "CS 381": { code: "CS 381", title: "Computer Organization", credits: 3, prereqs: ["CS 203", "CS 209"] },
+  "CS 384": { code: "CS 384", title: "Operating Systems", credits: 3, prereqs: ["CS 215", "CS 209"] },
+  "CS 488": { code: "CS 488", title: "Database Systems", credits: 3, prereqs: ["CS 215"] },
+  // ── General Computer Science electives (Bulletin p.205) ──
+  "CS 303": { code: "CS 303", title: "Assembly Language", credits: 3, prereqs: ["CS 109", "CS 203"] },
+  "CS 304": { code: "CS 304", title: "Intro to Web Programming", credits: 3, prereqs: ["CS 109"] },
+  "CS 306": { code: "CS 306", title: "Intro Java Programming II", credits: 3, prereqs: ["CS 206"] },
+  "CS 309": { code: "CS 309", title: "Computer Graphics", credits: 3, prereqs: ["CS 215", "CS 203"] },
+  "CS 311": { code: "CS 311", title: "Intro to Simulation", credits: 3, prereqs: ["CS 215"] },
+  "CS 315": { code: "CS 315", title: "Intro to Game Programming", credits: 3, prereqs: ["CS 215"] },
+  "CS 320": { code: "CS 320", title: "Intro to Multimedia Authoring", credits: 3, prereqs: ["CS 104"] },
+  "CS 321": { code: "CS 321", title: "Principles of Information Security", credits: 3, prereqs: ["CS 104"] },
+  "CS 328": { code: "CS 328", title: "Object Oriented Design with UML", credits: 3, prereqs: ["CS 109", "CS 206"] },
+  "CS 330": { code: "CS 330", title: "Computers in Society", credits: 3, prereqs: ["CS 104"] },
+  "CS 386": { code: "CS 386", title: "Cryptography", credits: 3, prereqs: ["CS 215", "CS 203"] },
+  "CS 389": { code: "CS 389", title: "Programming in Robotics Systems", credits: 3, prereqs: ["CS 109", "CS 206"] },
+  "CS 408": { code: "CS 408", title: "Wireless Computing", credits: 3, prereqs: ["CS 215"] },
   "CS 409": { code: "CS 409", title: "Intro to Digital Image Processing", credits: 3, prereqs: ["CS 203", "CS 209"] },
-  "CS 410": { code: "CS 410", title: "Senior Seminar", credits: 3, prereqs: [] },
-  "CS 412": { code: "CS 412", title: "Compiler Design", credits: 3, prereqs: ["CS 215"] },
+  "CS 413": { code: "CS 413", title: "Data Science", credits: 3, prereqs: ["CS 215"] },
   "CS 414": { code: "CS 414", title: "Forensic Computing", credits: 3, prereqs: ["CS 215", "CS 209"] },
   "CS 421": { code: "CS 421", title: "Computer Security", credits: 3, prereqs: ["CS 215", "CS 209"] },
-  "CS 425": { code: "CS 425", title: "Theory of Algorithms", credits: 3, prereqs: ["CS 215", "CS 203"] },
   "CS 430": { code: "CS 430", title: "Machine Learning", credits: 3, prereqs: ["CS 215", "CS 203"] },
-  "CS 440": { code: "CS 440", title: "Software Architecture", credits: 3, prereqs: ["CS 206", "CS 314"] },
+  "CS 435": { code: "CS 435", title: "Intro to Bioinformatics", credits: 3, prereqs: ["CS 215"] },
+  "CS 440": { code: "CS 440", title: "Programming Languages", credits: 3, prereqs: ["CS 206", "CS 314"] },
   "CS 450": { code: "CS 450", title: "Artificial Intelligence", credits: 3, prereqs: ["CS 215"] },
-  "CS 483": { code: "CS 483", title: "Computer Networks", credits: 3, prereqs: ["CS 215"] },
-  "CS 484": { code: "CS 484", title: "Computer Graphics", credits: 3, prereqs: ["CS 206", "CS 314"] },
-  "CS 485": { code: "CS 485", title: "Advanced Computer Architecture", credits: 3, prereqs: ["CS 203", "CS 209", "CS 381"] },
-  "CS 486": { code: "CS 486", title: "Parallel Processing", credits: 3, prereqs: ["CS 381", "CS 485"] },
-  "CS 488": { code: "CS 488", title: "Database Systems", credits: 3, prereqs: ["CS 215"] },
-  "CS 490": { code: "CS 490", title: "Advanced Topics in CS", credits: 3, prereqs: ["CS 215", "CS 381"] },
+  "CS 483": { code: "CS 483", title: "Compilers", credits: 3, prereqs: ["CS 215"] },
+  "CS 484": { code: "CS 484", title: "Internship", credits: 3, prereqs: ["CS 215"] },
+  "CS 485": { code: "CS 485", title: "Intro to Data Comm. & Networks", credits: 3, prereqs: ["CS 215"] },
+  "CS 490": { code: "CS 490", title: "High Performance Computing", credits: 3, prereqs: ["CS 215", "CS 381"] },
   // GenEd / Math / Physics
   "ENG 101": { code: "ENG 101", title: "Composition I", credits: 3, prereqs: [] },
   "ENG 102": { code: "ENG 102", title: "Composition II", credits: 3, prereqs: ["ENG 101"] },
@@ -203,40 +208,13 @@ export const CREDIT_MIN = 12;
 export const CREDIT_TARGET = 15;
 export const CREDIT_MAX = 18;
 
-// ─── Sample Transcript (Jeeban Bashyal) ──────────────────────────────────────
+// ─── Empty starting student ──────────────────────────────────────────────────
+// The planner begins blank — students upload a transcript or add courses manually.
 
-export const SAMPLE_STUDENT: StudentData = {
-  name: "Jeeban Bashyal",
-  id: "A00597565",
-  gpa: 3.91,
+export const EMPTY_STUDENT: StudentData = {
+  name: "",
+  id: "",
+  gpa: 0,
   concentration: "AI",
-  transcript: [
-    // Transfer from Gettysburg College
-    { code: "CS 102", grade: "TA", credits: 3, term: "Fall 2024 (Transfer)" },
-    { code: "CS 109", grade: "TB", credits: 3, term: "Spring 2025 (Transfer)" },
-    { code: "MTH 126", grade: "TA", credits: 4, term: "Fall 2024 (Transfer)" },
-    { code: "MTH 111", grade: "TA", credits: 3, term: "Spring 2025 (Transfer)" },
-    { code: "MTH 227", grade: "TA", credits: 4, term: "Spring 2025 (Transfer)" },
-    { code: "ECO 231", grade: "TA", credits: 3, term: "Spring 2025 (Transfer)" },
-    { code: "ECO 230", grade: "TA", credits: 3, term: "Fall 2024 (Transfer)" },
-    // AAMU Fall 2025
-    { code: "ENG 101", grade: "A", credits: 3, term: "Fall 2025" },
-    { code: "MUS 101", grade: "A", credits: 3, term: "Fall 2025" },
-    { code: "PHY 213", grade: "A", credits: 4, term: "Fall 2025" },
-    { code: "MTH 125", grade: "A", credits: 4, term: "Fall 2025" },
-    { code: "ORI 101", grade: "A", credits: 1, term: "Fall 2025" },
-    { code: "CS 203", grade: "A", credits: 3, term: "Fall 2025" },
-    // AAMU Spring 2026
-    { code: "ENG 102", grade: "A", credits: 3, term: "Spring 2026" },
-    { code: "PHY 214", grade: "A", credits: 4, term: "Spring 2026" },
-    { code: "HED 101", grade: "A", credits: 2, term: "Spring 2026" },
-    { code: "CS 206", grade: "A", credits: 3, term: "Spring 2026" },
-    { code: "CS 209", grade: "A", credits: 3, term: "Spring 2026" },
-    { code: "CS 215", grade: "B", credits: 3, term: "Spring 2026" },
-    // Pre-registered Fall 2026
-    { code: "CS 104", grade: "REG", credits: 3, term: "Fall 2026" },
-    { code: "CS 314", grade: "REG", credits: 3, term: "Fall 2026" },
-    { code: "ENG 202", grade: "REG", credits: 3, term: "Fall 2026" },
-    { code: "MTH 237", grade: "REG", credits: 3, term: "Fall 2026" },
-  ],
+  transcript: [],
 };

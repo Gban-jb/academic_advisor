@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   COURSES, norm, gradeIsPassing, gradeIsRegistered,
-  SAMPLE_STUDENT, type StudentData, type Grade, type Concentration, type TranscriptEntry,
+  type StudentData, type Grade, type Concentration, type TranscriptEntry,
 } from "@/lib/data";
 
 const ALL_GRADES: Grade[] = ["A+","A","A-","B+","B","B-","C+","C","C-","D+","D","D-","F","W","WF","I","TA","TB","TC","S","CR","P","REG"];
@@ -87,12 +87,6 @@ export default function StepEntry({ student, onChange, onNext }: Props) {
           <h2 className="text-xl font-semibold text-slate-900">Your Course History</h2>
           <p className="text-slate-500 text-sm mt-1">Upload a transcript or add courses manually. Grade C or above counts toward your degree.</p>
         </div>
-        <button
-          onClick={() => onChange(SAMPLE_STUDENT)}
-          className="text-xs font-medium text-maroon-700 hover:text-maroon-900 border border-maroon-200 hover:border-maroon-300 rounded-full px-3.5 py-1.5 shrink-0 transition-colors"
-        >
-          Load sample
-        </button>
       </div>
 
       {/* ── Dropzone ── */}
