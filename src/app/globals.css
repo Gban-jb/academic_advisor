@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer utilities {
+  /* Subtle ambient background */
+  .app-bg {
+    background-color: #faf7f5;
+    background-image:
+      radial-gradient(900px circle at 10% -10%, rgba(124, 21, 48, 0.06), transparent 45%),
+      radial-gradient(700px circle at 95% 0%, rgba(235, 181, 42, 0.07), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  /* Card glass surface */
+  .surface {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Skeleton shimmer */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+/* Thin, refined scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 21, 48, 0.18);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(124, 21, 48, 0.32); background-clip: content-box; }
+
+/* Print: hide chrome, show plan cleanly */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white !important; }
+  .app-bg { background: white !important; }
+}
